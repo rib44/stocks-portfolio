@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-primary">
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+
+
+            {% for d1,d2,d3 in data %}
+                <tr>
+                   <td>{{ d1.symbol }}</td>
+                   <td>{{ d1.name }}</td>
+                   <td>{{ d1.quantity }}</td>
+                   <td>{{ d2 | usd }}</td>
+                   <td>{{ d3.total | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>Cash</th>
+                <td colspan="3"></td>
+                <td>{{ cash | usd }}</td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+                <th>{{ total | usd }}</th>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}
